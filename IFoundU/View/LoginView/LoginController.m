@@ -7,8 +7,10 @@
 //
 
 #import "LoginController.h"
+#import "HomeController.h"
 
 #import "LoginView.h"
+
 
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC/ReactiveObjC.h>
@@ -25,7 +27,13 @@
 - (void)loadView {
     [super loadView];
    
-    
+    @weakify(self);
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"LoginSuccessNotification" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        HomeController *homeController = [[HomeController alloc]init];
+        @strongify(self);
+        [self presentViewController:homeController animated:YES completion:nil];
+        
+    }];
 }
 
 - (void)viewDidLoad {
@@ -33,8 +41,6 @@
     // Do any additional setup after loading the view.
      [self initViewFrame];
 }
-
-
 
 - (void)initViewFrame {
     self.loginView = [[LoginView alloc]initWithLoginFrame:UIScreen.mainScreen.bounds];
@@ -45,7 +51,9 @@
 
 - (void)superviewTap:(UITapGestureRecognizer *)gesture {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TapLoginController" object:nil];
-
+    
 }
+
+
 
 @end

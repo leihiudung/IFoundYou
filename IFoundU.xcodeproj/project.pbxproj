@@ -17,6 +17,9 @@
 		00C94BB722488B160099FF61 /* IFoundUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94BB622488B160099FF61 /* IFoundUUITests.m */; };
 		00C94BCE2248D84E0099FF61 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94BCD2248D84E0099FF61 /* LoginController.m */; };
 		00C94BD42248DF210099FF61 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94BD32248DF210099FF61 /* LoginView.m */; };
+		00C94BDC2249CF4F0099FF61 /* LoginViewMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94BDB2249CF4F0099FF61 /* LoginViewMode.m */; };
+		00C94BDF2249D76F0099FF61 /* UserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94BDE2249D76F0099FF61 /* UserObject.m */; };
+		00C94BE8224A05A30099FF61 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94BE7224A05A30099FF61 /* HomeController.m */; };
 		2F568746957A0ED02917712A /* Pods_IFoundUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73958CC6E0EA4432E143C1A /* Pods_IFoundUTests.framework */; };
 		9B29672F059A8E1C3F0B0388 /* Pods_IFoundU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C6EC34FFC6EE3AF9800CA8 /* Pods_IFoundU.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,13 @@
 		00C94BD22248DF210099FF61 /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		00C94BD32248DF210099FF61 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		00C94BD92248EE2C0099FF61 /* ColorInCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorInCommon.h; sourceTree = "<group>"; };
+		00C94BDA2249CF4F0099FF61 /* LoginViewMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewMode.h; sourceTree = "<group>"; };
+		00C94BDB2249CF4F0099FF61 /* LoginViewMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewMode.m; sourceTree = "<group>"; };
+		00C94BDD2249D76F0099FF61 /* UserObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserObject.h; sourceTree = "<group>"; };
+		00C94BDE2249D76F0099FF61 /* UserObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserObject.m; sourceTree = "<group>"; };
+		00C94BE02249D7F80099FF61 /* PersonalInCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInCommon.h; sourceTree = "<group>"; };
+		00C94BE4224A029A0099FF61 /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		00C94BE7224A05A30099FF61 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 		157AAA19DB1CD3C4EB38FD0D /* Pods-IFoundUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFoundUTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IFoundUTests/Pods-IFoundUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F6B5F3686817DA855B5574E /* Pods-IFoundUUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFoundUUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFoundUUITests/Pods-IFoundUUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3F47AD3B7CB33EF52C20C03F /* Pods-IFoundUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFoundUTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFoundUTests/Pods-IFoundUTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,8 +168,8 @@
 		00C94BC422488B450099FF61 /* ViewMode */ = {
 			isa = PBXGroup;
 			children = (
-				00C94BCC2248D84E0099FF61 /* LoginController.h */,
-				00C94BCD2248D84E0099FF61 /* LoginController.m */,
+				00C94BDA2249CF4F0099FF61 /* LoginViewMode.h */,
+				00C94BDB2249CF4F0099FF61 /* LoginViewMode.m */,
 			);
 			path = ViewMode;
 			sourceTree = "<group>";
@@ -167,6 +177,8 @@
 		00C94BCA2248D8150099FF61 /* Mode */ = {
 			isa = PBXGroup;
 			children = (
+				00C94BDD2249D76F0099FF61 /* UserObject.h */,
+				00C94BDE2249D76F0099FF61 /* UserObject.m */,
 			);
 			path = Mode;
 			sourceTree = "<group>";
@@ -174,6 +186,7 @@
 		00C94BCB2248D8190099FF61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				00C94BE3224A00EF0099FF61 /* HomeView */,
 				00C94BCF2248DEE70099FF61 /* LoginView */,
 			);
 			path = View;
@@ -184,6 +197,8 @@
 			children = (
 				00C94BD22248DF210099FF61 /* LoginView.h */,
 				00C94BD32248DF210099FF61 /* LoginView.m */,
+				00C94BCC2248D84E0099FF61 /* LoginController.h */,
+				00C94BCD2248D84E0099FF61 /* LoginController.m */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -192,8 +207,18 @@
 			isa = PBXGroup;
 			children = (
 				00C94BD92248EE2C0099FF61 /* ColorInCommon.h */,
+				00C94BE02249D7F80099FF61 /* PersonalInCommon.h */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		00C94BE3224A00EF0099FF61 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				00C94BE4224A029A0099FF61 /* HomeController.h */,
+				00C94BE7224A05A30099FF61 /* HomeController.m */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		90A1E39300FC38EB0DF6C0B9 /* Frameworks */ = {
@@ -457,7 +482,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				00C94BA222488B160099FF61 /* main.m in Sources */,
+				00C94BE8224A05A30099FF61 /* HomeController.m in Sources */,
+				00C94BDF2249D76F0099FF61 /* UserObject.m in Sources */,
 				00C94B9422488B140099FF61 /* AppDelegate.m in Sources */,
+				00C94BDC2249CF4F0099FF61 /* LoginViewMode.m in Sources */,
 				00C94BD42248DF210099FF61 /* LoginView.m in Sources */,
 				00C94BCE2248D84E0099FF61 /* LoginController.m in Sources */,
 			);

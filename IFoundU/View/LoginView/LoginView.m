@@ -8,6 +8,9 @@
 
 #import "LoginView.h"
 #import "ColorInCommon.h"
+#import "LoginViewMode.h"
+
+
 
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC/ReactiveObjC.h>
@@ -19,6 +22,10 @@
 @property (nonatomic, strong) UIButton *loginButton;
 
 @property (nonatomic, assign) CGRect bigFrame;
+
+@property (nonatomic, strong) LoginViewMode *loginViewMode;
+
+@property (nonatomic, strong) UIView *loadingView;
 @end
 
 @implementation LoginView
@@ -28,14 +35,14 @@
         [self initWithView:frame];
         self.bigFrame = frame;
         [self addNotification];
+        
+        [self initWithReactive];
     }
     return self;
 }
 
 - (void)addNotification {
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil] subscribeNext:^(NSNotification * _Nullable notification) {
-        
-        
         
         NSDictionary *info = [notification userInfo];
         //获取改变尺寸后的键盘的frame
@@ -62,7 +69,7 @@
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"TapLoginController" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
         [self superviewTap];
     }];
-    
+  
 }
 
 - (void)superviewTap {
@@ -74,6 +81,11 @@
 - (void)initWithView:(CGRect)frame {
     self.backgroundColor = UIColorOfRGB(0xF0FFF0);
     
+    self.loadingView = [[UIView alloc]initWithFrame:UIScreen.mainScreen.bounds];
+//    self.loadingView setBackgroundColor:
+//    [self.loadingView setHidden:YES];
+//    [self insertSubview:self.loadingView atIndex:0];
+    
     self.nameField = [[UITextField alloc]init];
     self.passwordField = [[UITextField alloc]init];
     self.loginButton = [[UIButton alloc]init];
@@ -82,6 +94,7 @@
     self.passwordField.backgroundColor = [UIColor whiteColor];
     [self.loginButton setBackgroundColor:[UIColor whiteColor]];
     [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+    [self.loginButton setEnabled:NO];
     [self.loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     [self addSubview:self.nameField];
@@ -113,4 +126,27 @@
     }];
     
 }
+
+/**
+ 初始化RAC监听对象
+ */
+- (void)initWithReactive {
+    self.loginViewMode = [[LoginViewMode alloc]init];
+    RAC(self.loginViewMode, userName) = self.nameField.rac_textSignal;
+    RAC(self.loginViewMode, password) = self.passwordField.rac_textSignal;
+    RAC(self.loginButton, enabled) = [self.loginViewMode bindInputView];
+    [self loginAction]; // button的点击事件
+    NSLog(@"%@", self.loginViewMode.userName);
+}
+
+- (void)loginAction {
+    @weakify(self);
+    [[self.loginButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        [self.loginViewMode loginRequest];
+        
+    }];
+}
+
+
 @end
