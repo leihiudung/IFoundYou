@@ -1,0 +1,6 @@
+framework module Pods_IFoundUUITests {
+  umbrella header "Pods-IFoundUUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
