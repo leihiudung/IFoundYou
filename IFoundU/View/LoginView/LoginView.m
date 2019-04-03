@@ -103,6 +103,10 @@
     
     [self setFrame:CGRectMake(0, (frame.size.height - 300)/2, frame.size.width, 300)];
     
+    // temp code
+    self.nameField.text = @"hhh";
+    self.passwordField.text = @"hhhh";
+    
     [self.nameField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self);
         make.centerY.mas_equalTo(self.mas_centerY).mas_offset(-60);

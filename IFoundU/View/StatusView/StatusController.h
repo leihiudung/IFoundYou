@@ -1,8 +1,8 @@
 //
-//  HomeController.h
+//  StatusController.h
 //  IFoundU
 //
-//  Created by Tom-Li on 2019/3/26.
+//  Created by Tom-Li on 2019/4/2.
 //  Copyright © 2019 litong. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeController : UITabBarController
+@interface StatusController : UIViewController
 
 @end
 

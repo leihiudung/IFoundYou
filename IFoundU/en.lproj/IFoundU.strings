@@ -1,0 +1,37 @@
+/* 
+  IFoundU.strings
+  IFoundU
+
+  Created by Tom-Li on 2019/4/2.
+  Copyright © 2019 litong. All rights reserved.
+*/
+
+"Status" = "Status";
+"Check" = "Check Again";
+"More" = "More";
+
+"CellFunction" = "Cell Function";
+"Memory" = "Memory";
+"CPU" = "CPU";
+"Storage" = "Storage";
+"Vibrator" = "Vibrator";
+"Flash" = "Flash";
+"SpeakerAndMic" = "Speaker and Mic";
+"ReceiverAndMic" = "Receiver and Mic";
+"EarphonesAndMic" = "Earphones and Mic";
+"WiFiConnection" = "Wi-Fi Connection";
+"CellularNetwork" = "Cellular Network";
+"Bluetooth" = "Bluetooth";
+"Barometer" = "Barometer";
+"GPS" = "GPS";
+"Multitouch" = "Multitouch";
+"ProximitySensor" = "Proximity Sensor";
+"Accelerometer" = "Accelerometer";
+"Gyroscope" = "Gyroscope";
+"Compass" = "Compass";
+"HomeButton" = "Home Button";
+"VolumeControl" = "Volume Control";
+"SleepAndWakeButton" = "Sleep/Wake Button";
+"HeadphoneJack" = "Headphone Jack";
+"Camera" = "Camera";
+"3DTouch" = "3D Touch";

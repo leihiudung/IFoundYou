@@ -1,0 +1,39 @@
+/* 
+  IFoundU.strings
+  IFoundU
+
+  Created by Tom-Li on 2019/4/2.
+  Copyright © 2019 litong. All rights reserved.
+*/
+
+"Status" = "Status";
+"Check" = "Check 你s老鼠";
+"More" = "More";
+
+
+"DetectProgress" = "检测进度";
+"CellFunction" = "通话功能";
+"Memory" = "内存";
+"CPU" = "处理器";
+"Storage" = "硬盘";
+"Vibrator" = "震动功能";
+"Flash" = "手电筒";
+"SpeakerAndMic" = "喇叭";
+"ReceiverAndMic" = "话筒";
+"EarphonesAndMic" = "耳机";
+"WiFiConnection" = "Wi-Fi连接";
+"CellularNetwork" = "行动网络";
+"Bluetooth" = "蓝牙";
+"Barometer" = "气压计";
+"GPS" = "定位功能";
+"Multitouch" = "多点触摸";
+"ProximitySensor" = "接近传感器";
+"Accelerometer" = "方向传感器";
+"Gyroscope" = "陀螺仪";
+"Compass" = "电子罗盘";
+"HomeButton" = "Home 键";
+"VolumeControl" = "音量键";
+"SleepAndWakeButton" = "休眠键";
+"HeadphoneJack" = "耳机孔";
+"Camera" = "照相机";
+"3DTouch" = "3D Touch";
