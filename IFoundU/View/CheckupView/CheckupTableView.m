@@ -10,6 +10,7 @@
 #import "M13ProgressViewRing.h"
 #import "CheckupTableViewCell.h"
 #import "CheckupViewMode.h"
+#import "SensorCommon.h"
 
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC/ReactiveObjC.h>
@@ -58,8 +59,8 @@
     
     [_progressViewRing addSubview:self.progressImageView];
     [self.progressImageView setUserInteractionEnabled:YES];
-    [self.checkupViewMode.testItemDic allKeys];
-    _testItemKeyArray = [self.checkupViewMode.testItemDic allKeys];
+//    [self.checkupViewMode.testItemarr];
+//    _testItemKeyArray = [self.checkupViewMode.testItemArray value];
 }
 
 - (void)initRac {
@@ -69,21 +70,22 @@
     @weakify(self)
     [[tapGesture rac_gestureSignal] subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x) {
         @strongify(self);
+        self.checkupViewMode.testItem = CellFunction;
         [self.checkupViewMode excuteing];
         
     }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.checkupViewMode.testItemDic.count;
+    return self.checkupViewMode.testItemArray.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellId"];
-    cell.textLabel.text = _testItemKeyArray[indexPath.row];
+    CheckupTableViewCell *cell = (CheckupTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"CellId" forIndexPath:indexPath];
+    cell.textLabel.text = [self.checkupViewMode.testItemArray[indexPath.row] allValues][0];
     return cell;
     
 }

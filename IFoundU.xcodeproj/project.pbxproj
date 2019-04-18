@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00620AD022645C72002AA4A3 /* ShoppingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620ACF22645C72002AA4A3 /* ShoppingController.m */; };
+		00620AD522646567002AA4A3 /* ShoppingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620AD422646567002AA4A3 /* ShoppingView.m */; };
+		00620AD8226470E9002AA4A3 /* MerchantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620AD7226470E9002AA4A3 /* MerchantController.m */; };
+		00620B3B22656EF2002AA4A3 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B3A22656EF2002AA4A3 /* SettingController.m */; };
+		00620B4122659079002AA4A3 /* MerchantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B4022659079002AA4A3 /* MerchantView.m */; };
+		00620B462265A833002AA4A3 /* LingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B452265A833002AA4A3 /* LingTextField.m */; };
+		00620B4B2265B8ED002AA4A3 /* HrefButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B4A2265B8ED002AA4A3 /* HrefButton.m */; };
+		00620B4E2265C142002AA4A3 /* CertaintyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B4D2265C142002AA4A3 /* CertaintyButton.m */; };
+		00620B532265C610002AA4A3 /* MerchantTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B522265C610002AA4A3 /* MerchantTableView.m */; };
+		00620B572266C9E4002AA4A3 /* ShoppingViewMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B562266C9E4002AA4A3 /* ShoppingViewMode.m */; };
+		00620B592266E229002AA4A3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00620B582266E229002AA4A3 /* CoreLocation.framework */; };
+		00620B5D2266F937002AA4A3 /* MerchantTableViewTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B5C2266F937002AA4A3 /* MerchantTableViewTipsView.m */; };
+		00620B6022671EAE002AA4A3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 00620B5F22671EAE002AA4A3 /* libsqlite3.tbd */; };
+		00620B66226720E4002AA4A3 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B65226720E4002AA4A3 /* SQLiteManager.m */; };
+		00620B6922672282002AA4A3 /* MerchantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B6822672282002AA4A3 /* MerchantObject.m */; };
 		00A5F75DC2E4B60AEA7D4D50 /* Pods_IFoundUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4463BB822AF6471ED0454C2 /* Pods_IFoundUUITests.framework */; };
 		00C94B9422488B140099FF61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94B9322488B140099FF61 /* AppDelegate.m */; };
 		00C94B9A22488B140099FF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C94B9822488B140099FF61 /* Main.storyboard */; };
@@ -48,7 +63,7 @@
 		00C94E702254450F0099FF61 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 00C94E5B2254450E0099FF61 /* README.md */; };
 		00C94E712254450F0099FF61 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 00C94E5C2254450E0099FF61 /* .gitignore */; };
 		00C94E74225451EB0099FF61 /* CheckupViewMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94E73225451EB0099FF61 /* CheckupViewMode.m */; };
-		00C94E782254657F0099FF61 /* LightChechupViewMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94E772254657F0099FF61 /* LightChechupViewMode.m */; };
+		00C94E782254657F0099FF61 /* LightCheckupViewMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94E772254657F0099FF61 /* LightCheckupViewMode.m */; };
 		00C94E7F22549DDF0099FF61 /* DeviceTypeCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94E7E22549DDF0099FF61 /* DeviceTypeCommon.m */; };
 		2F568746957A0ED02917712A /* Pods_IFoundUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73958CC6E0EA4432E143C1A /* Pods_IFoundUTests.framework */; };
 		9B29672F059A8E1C3F0B0388 /* Pods_IFoundU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C6EC34FFC6EE3AF9800CA8 /* Pods_IFoundU.framework */; };
@@ -72,6 +87,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00620ACE22645C72002AA4A3 /* ShoppingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingController.h; sourceTree = "<group>"; };
+		00620ACF22645C72002AA4A3 /* ShoppingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingController.m; sourceTree = "<group>"; };
+		00620AD122646109002AA4A3 /* ShoppingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingView.h; sourceTree = "<group>"; };
+		00620AD422646567002AA4A3 /* ShoppingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingView.m; sourceTree = "<group>"; };
+		00620AD7226470E9002AA4A3 /* MerchantController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerchantController.m; sourceTree = "<group>"; };
+		00620B3922656EF2002AA4A3 /* SettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
+		00620B3A22656EF2002AA4A3 /* SettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
+		00620B3D22659044002AA4A3 /* MerchantView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerchantView.h; sourceTree = "<group>"; };
+		00620B4022659079002AA4A3 /* MerchantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantView.m; sourceTree = "<group>"; };
+		00620B422265909A002AA4A3 /* MerchantController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerchantController.h; sourceTree = "<group>"; };
+		00620B442265A833002AA4A3 /* LingTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LingTextField.h; sourceTree = "<group>"; };
+		00620B452265A833002AA4A3 /* LingTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LingTextField.m; sourceTree = "<group>"; };
+		00620B472265B851002AA4A3 /* HrefButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HrefButton.h; sourceTree = "<group>"; };
+		00620B4A2265B8ED002AA4A3 /* HrefButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HrefButton.m; sourceTree = "<group>"; };
+		00620B4C2265C142002AA4A3 /* CertaintyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertaintyButton.h; sourceTree = "<group>"; };
+		00620B4D2265C142002AA4A3 /* CertaintyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertaintyButton.m; sourceTree = "<group>"; };
+		00620B4F2265C562002AA4A3 /* MerchantTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerchantTableView.h; sourceTree = "<group>"; };
+		00620B522265C610002AA4A3 /* MerchantTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantTableView.m; sourceTree = "<group>"; };
+		00620B552266C9E4002AA4A3 /* ShoppingViewMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingViewMode.h; sourceTree = "<group>"; };
+		00620B562266C9E4002AA4A3 /* ShoppingViewMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingViewMode.m; sourceTree = "<group>"; };
+		00620B582266E229002AA4A3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		00620B5B2266F937002AA4A3 /* MerchantTableViewTipsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerchantTableViewTipsView.h; sourceTree = "<group>"; };
+		00620B5C2266F937002AA4A3 /* MerchantTableViewTipsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerchantTableViewTipsView.m; sourceTree = "<group>"; };
+		00620B5F22671EAE002AA4A3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		00620B6222671FFF002AA4A3 /* SQLiteManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
+		00620B65226720E4002AA4A3 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
+		00620B6722672282002AA4A3 /* MerchantObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerchantObject.h; sourceTree = "<group>"; };
+		00620B6822672282002AA4A3 /* MerchantObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerchantObject.m; sourceTree = "<group>"; };
+		00620B6A2267504B002AA4A3 /* OperationFlagCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperationFlagCommon.h; sourceTree = "<group>"; };
 		00C94B8F22488B140099FF61 /* IFoundU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IFoundU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C94B9222488B140099FF61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		00C94B9322488B140099FF61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -156,8 +200,8 @@
 		00C94E5C2254450E0099FF61 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		00C94E72225451EB0099FF61 /* CheckupViewMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckupViewMode.h; sourceTree = "<group>"; };
 		00C94E73225451EB0099FF61 /* CheckupViewMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckupViewMode.m; sourceTree = "<group>"; };
-		00C94E762254657F0099FF61 /* LightChechupViewMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightChechupViewMode.h; sourceTree = "<group>"; };
-		00C94E772254657F0099FF61 /* LightChechupViewMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightChechupViewMode.m; sourceTree = "<group>"; };
+		00C94E762254657F0099FF61 /* LightCheckupViewMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightCheckupViewMode.h; sourceTree = "<group>"; };
+		00C94E772254657F0099FF61 /* LightCheckupViewMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightCheckupViewMode.m; sourceTree = "<group>"; };
 		00C94E79225498740099FF61 /* SensorCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SensorCommon.h; sourceTree = "<group>"; };
 		00C94E7D22549DDF0099FF61 /* DeviceTypeCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceTypeCommon.h; sourceTree = "<group>"; };
 		00C94E7E22549DDF0099FF61 /* DeviceTypeCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceTypeCommon.m; sourceTree = "<group>"; };
@@ -177,6 +221,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00620B6022671EAE002AA4A3 /* libsqlite3.tbd in Frameworks */,
+				00620B592266E229002AA4A3 /* CoreLocation.framework in Frameworks */,
 				9B29672F059A8E1C3F0B0388 /* Pods_IFoundU.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +246,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00620ACD22645C4D002AA4A3 /* ShoppingView */ = {
+			isa = PBXGroup;
+			children = (
+				00620B3C22658F65002AA4A3 /* Merchant */,
+				00620ACE22645C72002AA4A3 /* ShoppingController.h */,
+				00620ACF22645C72002AA4A3 /* ShoppingController.m */,
+				00620AD122646109002AA4A3 /* ShoppingView.h */,
+				00620AD422646567002AA4A3 /* ShoppingView.m */,
+				00620B3922656EF2002AA4A3 /* SettingController.h */,
+				00620B3A22656EF2002AA4A3 /* SettingController.m */,
+			);
+			path = ShoppingView;
+			sourceTree = "<group>";
+		};
+		00620B3C22658F65002AA4A3 /* Merchant */ = {
+			isa = PBXGroup;
+			children = (
+				00620B5A2266F919002AA4A3 /* MerchantTableTipsView */,
+				00620B422265909A002AA4A3 /* MerchantController.h */,
+				00620AD7226470E9002AA4A3 /* MerchantController.m */,
+				00620B3D22659044002AA4A3 /* MerchantView.h */,
+				00620B4022659079002AA4A3 /* MerchantView.m */,
+				00620B4F2265C562002AA4A3 /* MerchantTableView.h */,
+				00620B522265C610002AA4A3 /* MerchantTableView.m */,
+			);
+			path = Merchant;
+			sourceTree = "<group>";
+		};
+		00620B432265A818002AA4A3 /* SelfView */ = {
+			isa = PBXGroup;
+			children = (
+				00620B442265A833002AA4A3 /* LingTextField.h */,
+				00620B452265A833002AA4A3 /* LingTextField.m */,
+				00620B472265B851002AA4A3 /* HrefButton.h */,
+				00620B4A2265B8ED002AA4A3 /* HrefButton.m */,
+				00620B4C2265C142002AA4A3 /* CertaintyButton.h */,
+				00620B4D2265C142002AA4A3 /* CertaintyButton.m */,
+			);
+			path = SelfView;
+			sourceTree = "<group>";
+		};
+		00620B542266C9CE002AA4A3 /* ShoppingViewMode */ = {
+			isa = PBXGroup;
+			children = (
+				00620B552266C9E4002AA4A3 /* ShoppingViewMode.h */,
+				00620B562266C9E4002AA4A3 /* ShoppingViewMode.m */,
+			);
+			path = ShoppingViewMode;
+			sourceTree = "<group>";
+		};
+		00620B5A2266F919002AA4A3 /* MerchantTableTipsView */ = {
+			isa = PBXGroup;
+			children = (
+				00620B5B2266F937002AA4A3 /* MerchantTableViewTipsView.h */,
+				00620B5C2266F937002AA4A3 /* MerchantTableViewTipsView.m */,
+			);
+			path = MerchantTableTipsView;
+			sourceTree = "<group>";
+		};
+		00620B6122671FBF002AA4A3 /* DataPackage */ = {
+			isa = PBXGroup;
+			children = (
+				00620B6222671FFF002AA4A3 /* SQLiteManager.h */,
+				00620B65226720E4002AA4A3 /* SQLiteManager.m */,
+			);
+			path = DataPackage;
+			sourceTree = "<group>";
+		};
 		00C94B8622488B140099FF61 = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +339,7 @@
 		00C94B9122488B140099FF61 /* IFoundU */ = {
 			isa = PBXGroup;
 			children = (
+				00620B6122671FBF002AA4A3 /* DataPackage */,
 				00C94E2C2254450E0099FF61 /* M13ProgressSuite-master */,
 				00C94BD52248ED820099FF61 /* Common */,
 				00C94BCB2248D8190099FF61 /* View */,
@@ -263,6 +378,7 @@
 		00C94BC422488B450099FF61 /* ViewMode */ = {
 			isa = PBXGroup;
 			children = (
+				00620B542266C9CE002AA4A3 /* ShoppingViewMode */,
 				00C94BDA2249CF4F0099FF61 /* LoginViewMode.h */,
 				00C94BDB2249CF4F0099FF61 /* LoginViewMode.m */,
 				00C94E72225451EB0099FF61 /* CheckupViewMode.h */,
@@ -277,6 +393,8 @@
 			children = (
 				00C94BDD2249D76F0099FF61 /* UserObject.h */,
 				00C94BDE2249D76F0099FF61 /* UserObject.m */,
+				00620B6722672282002AA4A3 /* MerchantObject.h */,
+				00620B6822672282002AA4A3 /* MerchantObject.m */,
 			);
 			path = Mode;
 			sourceTree = "<group>";
@@ -284,6 +402,8 @@
 		00C94BCB2248D8190099FF61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				00620B432265A818002AA4A3 /* SelfView */,
+				00620ACD22645C4D002AA4A3 /* ShoppingView */,
 				00C94CB422532C050099FF61 /* ShareView */,
 				00C94CB0225312B30099FF61 /* StatusView */,
 				00C94CAC2252F1D00099FF61 /* CheckupView */,
@@ -311,6 +431,7 @@
 				00C94BD92248EE2C0099FF61 /* ColorInCommon.h */,
 				00C94BE02249D7F80099FF61 /* PersonalInCommon.h */,
 				00C94E79225498740099FF61 /* SensorCommon.h */,
+				00620B6A2267504B002AA4A3 /* OperationFlagCommon.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -462,8 +583,8 @@
 		00C94E752254645C0099FF61 /* CheckupViewMode */ = {
 			isa = PBXGroup;
 			children = (
-				00C94E762254657F0099FF61 /* LightChechupViewMode.h */,
-				00C94E772254657F0099FF61 /* LightChechupViewMode.m */,
+				00C94E762254657F0099FF61 /* LightCheckupViewMode.h */,
+				00C94E772254657F0099FF61 /* LightCheckupViewMode.m */,
 			);
 			path = CheckupViewMode;
 			sourceTree = "<group>";
@@ -480,6 +601,8 @@
 		90A1E39300FC38EB0DF6C0B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00620B5F22671EAE002AA4A3 /* libsqlite3.tbd */,
+				00620B582266E229002AA4A3 /* CoreLocation.framework */,
 				00C94E2A225444500099FF61 /* Contacts.framework */,
 				68C6EC34FFC6EE3AF9800CA8 /* Pods_IFoundU.framework */,
 				D73958CC6E0EA4432E143C1A /* Pods_IFoundUTests.framework */,
@@ -513,6 +636,7 @@
 				00C94B8C22488B140099FF61 /* Frameworks */,
 				00C94B8D22488B140099FF61 /* Resources */,
 				A1AEEFFA607935ED62092F6E /* [CP] Embed Pods Frameworks */,
+				448A2CFB8F85CA8C46D5864D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -679,6 +803,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		448A2CFB8F85CA8C46D5864D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IFoundU/Pods-IFoundU-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IFoundU/Pods-IFoundU-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		82406BD366842F068240E016 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -711,24 +857,34 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IFoundU/Pods-IFoundU-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework",
+				"${BUILT_PRODUCTS_DIR}/Folly/folly.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/React/React.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/glog/glog.framework",
+				"${BUILT_PRODUCTS_DIR}/yoga/yoga.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DoubleConversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/folly.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -743,6 +899,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00C94BA222488B160099FF61 /* main.m in Sources */,
+				00620AD8226470E9002AA4A3 /* MerchantController.m in Sources */,
 				00C94E642254450E0099FF61 /* M13ProgressViewMetro.m in Sources */,
 				00C94BE8224A05A30099FF61 /* HomeController.m in Sources */,
 				00C94BDF2249D76F0099FF61 /* UserObject.m in Sources */,
@@ -751,28 +908,40 @@
 				00C94E662254450E0099FF61 /* M13ProgressViewImage.m in Sources */,
 				00C94B9422488B140099FF61 /* AppDelegate.m in Sources */,
 				00C94E6C2254450F0099FF61 /* UIApplication+M13ProgressSuite.m in Sources */,
+				00620B5D2266F937002AA4A3 /* MerchantTableViewTipsView.m in Sources */,
+				00620B532265C610002AA4A3 /* MerchantTableView.m in Sources */,
 				00C94E29225349280099FF61 /* CheckupTableViewCell.m in Sources */,
 				00C94E602254450E0099FF61 /* M13ProgressViewBar.m in Sources */,
+				00620B572266C9E4002AA4A3 /* ShoppingViewMode.m in Sources */,
 				00C94E692254450F0099FF61 /* M13ProgressViewFilteredImage.m in Sources */,
+				00620B462265A833002AA4A3 /* LingTextField.m in Sources */,
+				00620AD522646567002AA4A3 /* ShoppingView.m in Sources */,
 				00C94CB3225312DC0099FF61 /* StatusController.m in Sources */,
 				00C94CC722533F2A0099FF61 /* CheckupTableView.m in Sources */,
 				00C94BDC2249CF4F0099FF61 /* LoginViewMode.m in Sources */,
+				00620B66226720E4002AA4A3 /* SQLiteManager.m in Sources */,
 				00C94E74225451EB0099FF61 /* CheckupViewMode.m in Sources */,
 				00C94CAF22530B5A0099FF61 /* CheckupController.m in Sources */,
+				00620AD022645C72002AA4A3 /* ShoppingController.m in Sources */,
 				00C94E6D2254450F0099FF61 /* M13ProgressConsole.m in Sources */,
 				00C94E5F2254450E0099FF61 /* M13ProgressViewMetroDotPolygon.m in Sources */,
+				00620B3B22656EF2002AA4A3 /* SettingController.m in Sources */,
 				00C94E682254450F0099FF61 /* M13ProgressViewSegmentedRing.m in Sources */,
-				00C94E782254657F0099FF61 /* LightChechupViewMode.m in Sources */,
+				00C94E782254657F0099FF61 /* LightCheckupViewMode.m in Sources */,
 				00C94E5D2254450E0099FF61 /* UINavigationController+M13ProgressViewBar.m in Sources */,
 				00C94E6B2254450F0099FF61 /* M13ProgressViewSegmentedBar.m in Sources */,
+				00620B4B2265B8ED002AA4A3 /* HrefButton.m in Sources */,
 				00C94E672254450F0099FF61 /* M13ProgressViewRadiative.m in Sources */,
 				00C94E652254450E0099FF61 /* M13ProgressView.m in Sources */,
 				00C94BD42248DF210099FF61 /* LoginView.m in Sources */,
 				00C94E7F22549DDF0099FF61 /* DeviceTypeCommon.m in Sources */,
 				00C94E612254450E0099FF61 /* M13ProgressViewLetterpress.m in Sources */,
 				00C94BCE2248D84E0099FF61 /* LoginController.m in Sources */,
+				00620B4E2265C142002AA4A3 /* CertaintyButton.m in Sources */,
 				00C94E6E2254450F0099FF61 /* M13ProgressHUD.m in Sources */,
+				00620B6922672282002AA4A3 /* MerchantObject.m in Sources */,
 				00C94E6F2254450F0099FF61 /* UIImage+ImageEffects.m in Sources */,
+				00620B4122659079002AA4A3 /* MerchantView.m in Sources */,
 				00C94E5E2254450E0099FF61 /* M13ProgressViewPie.m in Sources */,
 				00C94E632254450E0099FF61 /* M13ProgressViewBorderedBar.m in Sources */,
 				00C94CB722532C3E0099FF61 /* ShareController.m in Sources */,

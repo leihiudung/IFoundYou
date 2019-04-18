@@ -10,6 +10,7 @@
 #import "CheckupController.h"
 #import "StatusController.h"
 #import "ShareController.h"
+#import "ShoppingController.h"
 
 @interface HomeController ()
 @property (nonatomic, strong) UITabBar *tabBar;
@@ -25,17 +26,23 @@
     StatusController *statusControllre = [[StatusController alloc]init];
     CheckupController *checkController = [[CheckupController alloc]init];
     ShareController *shareController = [[ShareController alloc]init];
+    ShoppingController *shoppingController = [[ShoppingController alloc]init];
+    
     
     UINavigationController *statusNavigationController = [[UINavigationController alloc]initWithRootViewController:statusControllre];
     
     UINavigationController *checkNavigationController = [[UINavigationController alloc]initWithRootViewController:checkController];
     
     UINavigationController *shareNavigationController = [[UINavigationController alloc]initWithRootViewController:shareController];
+    
+    UINavigationController *shoppingNavigationController = [[UINavigationController alloc]initWithRootViewController:shoppingController];
+    shoppingNavigationController.tabBarItem.title = @"Shopping";
 
-    self.viewControllers = @[statusNavigationController, checkNavigationController, shareNavigationController];
+    self.viewControllers = @[statusNavigationController, checkNavigationController, shareNavigationController, shoppingNavigationController];
     [self setSelectedIndex:1];
     
     self.tabBar.tintColor = UIColor.redColor;
+    
 }
 
 - (void)viewDidLoad {

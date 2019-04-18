@@ -42,10 +42,12 @@
         return @(userName.length >=3 && password.length >= 3);
     }];
     return combineSignal;
+    
 }
 
 - (void)loginRequest {
     NSArray *requestParams = @[self.userName, self.password];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"LoginSuccessNotification" object:nil userInfo:@{}];
+    
 }
 @end
