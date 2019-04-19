@@ -10,6 +10,7 @@ target 'IFoundU' do
   pod 'SnapKit', '~> 4.2.0'
   pod 'AFNetworking', '~> 3.2.1'
   pod "BaiduMapKit" #百度地图SDK
+  pod "BMKLocationKit"
   # Pods for IFoundU
   pod 'React', :path => '../../node_modules/react-native', :subspecs => [
   'Core',

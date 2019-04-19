@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - BaiduMapKit (4.2.1)
+  - BMKLocationKit (1.4.0)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - Folly (2018.10.22.00):
@@ -88,6 +89,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
   - BaiduMapKit
+  - BMKLocationKit
   - DoubleConversion (from `../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Folly (from `../../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -114,6 +116,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BaiduMapKit
+    - BMKLocationKit
     - boost-for-react-native
     - Masonry
     - ReactiveCocoa
@@ -137,6 +140,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   BaiduMapKit: b7430823de488bb6d082e4e1d356dadf09d3edb2
+  BMKLocationKit: ca1343eea19b2f2e999d1ad51bd6a1f1220f3456
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
@@ -150,6 +154,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: 3cec30173ee7bb39145c8c3e63807b7b7e46f421
+PODFILE CHECKSUM: 23fb43e4afc3c3151f5b925c02b2af799f48ec99
 
 COCOAPODS: 1.5.3

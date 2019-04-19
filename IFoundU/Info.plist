@@ -36,11 +36,11 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
+	<string>dd</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>ddd</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>dddd</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

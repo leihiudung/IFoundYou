@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) id<SQLiteManagerDelegate> delegate;
 - (void)insertData:(NSDictionary *)dic;
 - (NSArray<NSDictionary<NSString *, NSString *> *> *)getData;
-
+- (NSArray<NSDictionary<NSString *, NSString *> *> *)getDataWidhCondition:(NSDictionary *)dic;
 @end
 
 NS_ASSUME_NONNULL_END

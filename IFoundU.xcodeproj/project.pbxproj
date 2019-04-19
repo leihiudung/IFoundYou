@@ -22,6 +22,8 @@
 		00620B6022671EAE002AA4A3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 00620B5F22671EAE002AA4A3 /* libsqlite3.tbd */; };
 		00620B66226720E4002AA4A3 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B65226720E4002AA4A3 /* SQLiteManager.m */; };
 		00620B6922672282002AA4A3 /* MerchantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B6822672282002AA4A3 /* MerchantObject.m */; };
+		00620B7022682968002AA4A3 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B6F22682968002AA4A3 /* SettingView.m */; };
+		00620BB5226872C4002AA4A3 /* DistanceCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620BB4226872C4002AA4A3 /* DistanceCommon.m */; };
 		00A5F75DC2E4B60AEA7D4D50 /* Pods_IFoundUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4463BB822AF6471ED0454C2 /* Pods_IFoundUUITests.framework */; };
 		00C94B9422488B140099FF61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94B9322488B140099FF61 /* AppDelegate.m */; };
 		00C94B9A22488B140099FF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C94B9822488B140099FF61 /* Main.storyboard */; };
@@ -116,6 +118,11 @@
 		00620B6722672282002AA4A3 /* MerchantObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MerchantObject.h; sourceTree = "<group>"; };
 		00620B6822672282002AA4A3 /* MerchantObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerchantObject.m; sourceTree = "<group>"; };
 		00620B6A2267504B002AA4A3 /* OperationFlagCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperationFlagCommon.h; sourceTree = "<group>"; };
+		00620B6E22682968002AA4A3 /* SettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		00620B6F22682968002AA4A3 /* SettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
+		00620B712268467E002AA4A3 /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Base.framework; path = Pods/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
+		00620BB3226872C4002AA4A3 /* DistanceCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistanceCommon.h; sourceTree = "<group>"; };
+		00620BB4226872C4002AA4A3 /* DistanceCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistanceCommon.m; sourceTree = "<group>"; };
 		00C94B8F22488B140099FF61 /* IFoundU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IFoundU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C94B9222488B140099FF61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		00C94B9322488B140099FF61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -249,13 +256,12 @@
 		00620ACD22645C4D002AA4A3 /* ShoppingView */ = {
 			isa = PBXGroup;
 			children = (
+				00620B6D2268294A002AA4A3 /* Setting */,
 				00620B3C22658F65002AA4A3 /* Merchant */,
 				00620ACE22645C72002AA4A3 /* ShoppingController.h */,
 				00620ACF22645C72002AA4A3 /* ShoppingController.m */,
 				00620AD122646109002AA4A3 /* ShoppingView.h */,
 				00620AD422646567002AA4A3 /* ShoppingView.m */,
-				00620B3922656EF2002AA4A3 /* SettingController.h */,
-				00620B3A22656EF2002AA4A3 /* SettingController.m */,
 			);
 			path = ShoppingView;
 			sourceTree = "<group>";
@@ -312,6 +318,17 @@
 				00620B65226720E4002AA4A3 /* SQLiteManager.m */,
 			);
 			path = DataPackage;
+			sourceTree = "<group>";
+		};
+		00620B6D2268294A002AA4A3 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				00620B3922656EF2002AA4A3 /* SettingController.h */,
+				00620B3A22656EF2002AA4A3 /* SettingController.m */,
+				00620B6E22682968002AA4A3 /* SettingView.h */,
+				00620B6F22682968002AA4A3 /* SettingView.m */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		00C94B8622488B140099FF61 = {
@@ -594,6 +611,8 @@
 			children = (
 				00C94E7D22549DDF0099FF61 /* DeviceTypeCommon.h */,
 				00C94E7E22549DDF0099FF61 /* DeviceTypeCommon.m */,
+				00620BB3226872C4002AA4A3 /* DistanceCommon.h */,
+				00620BB4226872C4002AA4A3 /* DistanceCommon.m */,
 			);
 			path = ToolCommon;
 			sourceTree = "<group>";
@@ -601,6 +620,7 @@
 		90A1E39300FC38EB0DF6C0B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00620B712268467E002AA4A3 /* BaiduMapAPI_Base.framework */,
 				00620B5F22671EAE002AA4A3 /* libsqlite3.tbd */,
 				00620B582266E229002AA4A3 /* CoreLocation.framework */,
 				00C94E2A225444500099FF61 /* Contacts.framework */,
@@ -915,9 +935,11 @@
 				00620B572266C9E4002AA4A3 /* ShoppingViewMode.m in Sources */,
 				00C94E692254450F0099FF61 /* M13ProgressViewFilteredImage.m in Sources */,
 				00620B462265A833002AA4A3 /* LingTextField.m in Sources */,
+				00620B7022682968002AA4A3 /* SettingView.m in Sources */,
 				00620AD522646567002AA4A3 /* ShoppingView.m in Sources */,
 				00C94CB3225312DC0099FF61 /* StatusController.m in Sources */,
 				00C94CC722533F2A0099FF61 /* CheckupTableView.m in Sources */,
+				00620BB5226872C4002AA4A3 /* DistanceCommon.m in Sources */,
 				00C94BDC2249CF4F0099FF61 /* LoginViewMode.m in Sources */,
 				00620B66226720E4002AA4A3 /* SQLiteManager.m in Sources */,
 				00C94E74225451EB0099FF61 /* CheckupViewMode.m in Sources */,
@@ -1130,6 +1152,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/BaiduMapKit/BaiduMapKit",
+				);
 				INFOPLIST_FILE = IFoundU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1147,6 +1173,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/BaiduMapKit/BaiduMapKit",
+				);
 				INFOPLIST_FILE = IFoundU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

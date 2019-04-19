@@ -131,7 +131,7 @@
 
 - (NSArray<NSDictionary<NSString *, NSString *> *> *)getData {
     //1.创建数据查询的sql语句
-    const char * sql = "SELECT name,score FROM t_merchant;";
+    const char * sql = "SELECT * FROM t_merchant;";
     
     //2.执行sql语句
     //参数1:数据库
@@ -153,6 +153,48 @@
             double score = sqlite3_column_double(stmt, 1);
             NSLog(@"%s %.2lf", name, score);
         }
+    }else{
+        NSLog(@"查询失败");
+    }
+    return nil;
+}
+
+
+- (NSArray<NSDictionary<NSString *, NSString *> *> *)getDataWidhCondition:(NSDictionary *)dic {
+    //1.创建数据查询的sql语句
+    const char * sql = "SELECT * FROM t_merchant where latitude < ;";
+    NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM t_merchant where latitude <= %@ and longtitude <= %@ and latitude >= %@ and longtitude >= %@", [NSString stringWithFormat:@"%f", [dic[@"maxLat"] doubleValue]], [NSString stringWithFormat:@"%f", [dic[@"maxLong"] doubleValue]], [NSString stringWithFormat:@"%f", [dic[@"minLat"] doubleValue]], [NSString stringWithFormat:@"%f", [dic[@"minLong"] doubleValue]]];
+    
+    //2.执行sql语句
+    //参数1:数据库
+    //参数2:sql语句
+    //参数3:sql语句的长度(-1自动计算)
+    //参数4:结果集(用来收集查询结果)
+    sqlite3_stmt * stmt;
+    //参数5:NULL
+    //返回值:执行结果
+    int ret = sqlite3_prepare_v2(_db, querySql.UTF8String, -1, &stmt, NULL);
+    if (ret == SQLITE_OK) {
+        NSLog(@"查询成功");
+        NSMutableArray *mutableArray = [NSMutableArray array];
+        //遍历结果集拿到查询到的数据
+        //sqlite3_step获取结果集中的数据
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            //参数1:结果集
+            //参数2:列数
+        
+            const NSString *name = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 1)];
+            const NSString *addr = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 2)];
+            const NSString *phone = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 3)];
+            const NSString *latitude = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 8)];
+            const NSString *longtitude = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 9)];
+            
+            NSDictionary *tempDic = @{@"name": name, @"addr": addr, @"phone": phone, @"latitude": latitude, @"longtitude": longtitude};
+            [mutableArray addObject:tempDic];
+            
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DataWidhConditionNotification" object:nil userInfo:@{@"resultArray": mutableArray.copy}];
+        
     }else{
         NSLog(@"查询失败");
     }
