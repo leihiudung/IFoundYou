@@ -29,7 +29,7 @@
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    self.navigationController.title =  NSLocalizedStringFromTable(@"Check", @"IFoundU", @"");
+//    self.navigationController.title =  NSLocalizedStringFromTable(@"Check", @"IFoundU", @"");
     [self.navigationController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor redColor]} forState:UIControlStateNormal];
     
     [self.navigationController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]} forState:UIControlStateSelected];

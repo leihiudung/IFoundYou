@@ -7,13 +7,13 @@
 //
 
 #import "ShoppingView.h"
-
-
+#import "MerchantTableViewTipsView.h"
+#import "OperationFlagCommon.h"
 
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 
-@interface ShoppingView()<UITableViewDataSource> {
+@interface ShoppingView()<UITableViewDataSource,  UITableViewDelegate> {
     BOOL _isOperating;
 }
 @property (nonatomic, strong) UIButton *merchantBtn;
@@ -23,6 +23,9 @@
 @property (nonatomic, strong) UITableView *nearbyTableView;
 
 @property (nonatomic, strong) NSArray *resultData;
+
+// 点击cell后显示
+@property (nonatomic, strong) MerchantTableViewTipsView *tipsView;
 @end
 
 @implementation ShoppingView
@@ -90,7 +93,13 @@
     }];
     
     [self.nearbyTableView setDataSource:self];
+    [self.nearbyTableView setDelegate:self];
     
+    // 地址详细信息
+    self.tipsView = [[MerchantTableViewTipsView alloc]initWithFrame:UIScreen.mainScreen.bounds ofType:Hide];
+    [self.tipsView setHidden:YES];
+    [self addSubview:self.tipsView];
+
 }
 
 - (void)initRAC {
@@ -133,7 +142,12 @@
     NSString *addr = dic[@"addr"];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellId" forIndexPath:indexPath];
     cell.textLabel.text = addr;
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tipsView setContentWithDic:self.resultData[indexPath.row]];
 }
 
 - (void)nearbyMerchant:(NSNotification *)notification {

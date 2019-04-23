@@ -10,3 +10,8 @@ typedef enum : NSUInteger {
     Normal,
     Failure,
 } OperationFlag;
+
+typedef enum : NSUInteger {
+    Show,
+    Hide,
+} TipsViewOperationFlag;

@@ -8,13 +8,16 @@
 
 #import "MerchantTableViewTipsView.h"
 
+#import <MapKit/MapKit.h>
+
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC/ReactiveObjC.h>
+#import <UserNotifications/UserNotifications.h>
 
 #define UIColorOfRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1]
+//#define UIColorOfRGB(rgbValue, alpha) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alpha]
 
-
-@interface MerchantTableViewTipsView()
+@interface MerchantTableViewTipsView() <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIView *detailView;
 @property (nonatomic, strong) UILabel *titleView;
@@ -48,10 +51,28 @@
     return self;
 }
 
-- (void)initView {
+- (instancetype)initWithFrame:(CGRect)frame ofType:(TipsViewOperationFlag)flag
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initView];
+        [self initRAC];
+        if (flag == Hide) {
+            [self.uncertaintyBtn setHidden:YES];
+            [self.certaintyBtn setHidden:YES];
+            
+        }
+    }
+    return self;
+}
 
-    [self setAlpha:0.8];
-    [self setBackgroundColor:UIColorOfRGB(0X004D76)];
+- (void)initView {
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideView:)];
+    gesture.delegate = self;
+    [self setTag:1];
+    [self addGestureRecognizer:gesture];
+    
+    [self setBackgroundColor:[UIColorOfRGB(0X004D76) colorWithAlphaComponent:0.8]];
     
     self.detailView = [[UIView alloc]init];
     CALayer *detailLayer = self.detailView.layer;
@@ -131,6 +152,11 @@
         make.bottom.mas_equalTo(self.detailView.mas_bottom).mas_offset(-12);
     }];
     
+    UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAddr:)];
+    
+    [self.addrView setUserInteractionEnabled:YES];
+    [self.addrView addGestureRecognizer:labelTapGestureRecognizer];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(operationCompleted:) name:@"InsertCompletedNotification" object:nil];
 }
 
@@ -181,6 +207,73 @@
     }
     [self setHidden:YES];
     
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view tag] != 1) {
+        return NO;
+    }
+    
+    return YES;
+
+}
+
+- (void)hideView:(UITapGestureRecognizer *)gesture {
+    [self setHidden:YES];
+    
+}
+
+- (void)tapAddr:(UITapGestureRecognizer *)gesture {
+    [MerchantTableViewTipsView registerNotification:6];
+    CLLocationCoordinate2D gps = CLLocationCoordinate2DMake([self.transDic[@"latitude"] doubleValue], [self.transDic[@"longtitude"] doubleValue]);
+    MKMapItem *currentLoc = [MKMapItem mapItemForCurrentLocation];
+    MKMapItem *destinationLoc = [[MKMapItem alloc]initWithPlacemark:[[MKPlacemark alloc]initWithCoordinate:gps]];
+    NSArray *items = @[currentLoc, destinationLoc];
+    
+    NSDictionary *dic = @{
+                          MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking,
+                          MKLaunchOptionsMapTypeKey : @(MKMapTypeStandard),
+                          MKLaunchOptionsShowsTrafficKey : @(YES)};
+    
+    
+}
+
+//使用 UNNotification 本地通知
++(void)registerNotification:(NSInteger )alerTime{
+    
+    // 使用 UNUserNotificationCenter 来管理通知
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    
+    //需创建一个包含待通知内容的 UNMutableNotificationContent 对象，注意不是 UNNotificationContent ,此对象为不可变对象。
+    UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
+    content.title = [NSString localizedUserNotificationStringForKey:@"Hello!" arguments:nil];
+    content.body = [NSString localizedUserNotificationStringForKey:@"Hello_message_body"
+                                                         arguments:nil];
+    content.sound = [UNNotificationSound defaultSound];
+    // 图片
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"tututu" ofType:@"jpg"];
+    NSError *error = nil;
+    //将本地图片的路径形成一个图片附件，加入到content中
+    UNNotificationAttachment *img_attachment = [UNNotificationAttachment attachmentWithIdentifier:@"att1" URL:[NSURL fileURLWithPath:path] options:nil error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    content.attachments = @[img_attachment];
+    
+    //
+    // 在 alertTime 后推送本地推送
+    UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
+                                                  triggerWithTimeInterval:alerTime repeats:NO];
+    
+    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"FiveSecond"
+                                                                          content:content trigger:trigger];
+    
+    //添加推送成功后的处理！
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"本地通知" message:@"成功添加推送" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+    }];
 }
 
 @end

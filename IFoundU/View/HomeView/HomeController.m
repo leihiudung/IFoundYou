@@ -32,6 +32,7 @@
     UINavigationController *statusNavigationController = [[UINavigationController alloc]initWithRootViewController:statusControllre];
     
     UINavigationController *checkNavigationController = [[UINavigationController alloc]initWithRootViewController:checkController];
+    checkNavigationController.tabBarItem.title = NSLocalizedStringFromTable(@"Check", @"IFoundU", @"");
     
     UINavigationController *shareNavigationController = [[UINavigationController alloc]initWithRootViewController:shareController];
     

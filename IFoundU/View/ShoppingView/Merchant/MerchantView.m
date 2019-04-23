@@ -153,14 +153,19 @@
         weakself->_isRefreshing = NO;
     }];
     
-    
     [[self.confirmBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         [weakself.resultArray removeAllObjects];
         [self.viewMode poiSearchInCity];
 
     }];
-}
+    
+    [[self.importBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        UIViewController *vc = [UIViewController new];
+        vc.view = self;
 
+    }];
+}
+// 
 - (void)selfTouchAction:(UITapGestureRecognizer *)gesture {
     [self.storeView resignFirstResponder];
 }

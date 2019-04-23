@@ -10,7 +10,7 @@
 
 
 #import <sqlite3.h>
-
+static NSString *APP_DB_IDENTIFIER = @"iOS_DatabaseUpdateDemo";
 @interface SQLiteManager() {
     sqlite3 *_db;
 }
@@ -19,14 +19,29 @@
 
 @implementation SQLiteManager
 
+static NSString *databaseFilePath() {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *directory = [paths objectAtIndex:0];
+    NSString *dbPath = [directory stringByAppendingPathComponent:[[[NSBundle mainBundle] bundleIdentifier] stringByAppendingString:@".db"]];
+    
+    NSLog(@"dbPath:%@",dbPath);
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:dbPath withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    return [[dbPath stringByAppendingPathComponent:APP_DB_IDENTIFIER] stringByAppendingString:@".sqlite"];
+}
+
 + (instancetype)share {
     static dispatch_once_t onceToken;
     static SQLiteManager *sqliteManager;
     dispatch_once(&onceToken, ^{
         sqliteManager = [[SQLiteManager alloc]init];
         [sqliteManager initDatabase];
+        NSString *tempString= databaseFilePath();
+        NSLog(@"done");
     });
     return sqliteManager;
+    
 }
 
 - (void)initDatabase {
@@ -40,26 +55,62 @@
         NSLog(@"成功打开数据库");
         
         // 创表
-        const char *sql = "create table if not exists t_merchant (id integer primary key autoincrement, name text, addr text, phone text, province text, city text, area text, detailInfo text, latitude TEXT, longtitude TEXT);";
+        const char *typeSql = "create table if not exists t_interaction_type (id integer primary key autoincrement, name text, type text);";
+
+        const char *citySql = "create table if not exists t_city (id integer primary key autoincrement, name text);";
         
-        char *errorMesg = NULL; // 用来存储错误信息
-        //sqlite3_exec()可以执行任何SQL语句，比如创表、更新、插入和删除操作。但是一般不用它执行查询语句，因为它不会返回查询到的数据
-        int result = sqlite3_exec(_db, sql, NULL, NULL, &errorMesg);
+        const char *districtSql = "create table if not exists t_district (id integer primary key autoincrement, name text, sub_district_id integer, foreign key(sub_district_id) references t_city(id));";
         
-        if (result == SQLITE_OK) {
-            
-            NSLog(@"成功创建t_student表");
-            
-        }else {
-            
-            NSLog(@"创建 t_student失败:%s",errorMesg);
-        }
+        const char *merchantSql = "create table if not exists t_merchant (id integer primary key autoincrement, name text, addr text, phone text, province text, city text, area text, detailInfo text, latitude TEXT, longtitude TEXT, interaction_type_id integer, district_id integer, foreign key(interaction_type_id) references t_interaction_type(id), foreign key(district_id) references t_district(id));";
+        
+        [self initTables:typeSql];
+        [self initTables:citySql];
+        [self initTables:districtSql];
+        [self initTables:merchantSql];
+        
+        [self insertInteractionType];
         
     }else {
         
         NSLog(@"打开数据库失败");
     }
     
+}
+
+- (void)initTables:(const char *)sql {
+    char *errorMesg = NULL; // 用来存储错误信息
+    //sqlite3_exec()可以执行任何SQL语句，比如创表、更新、插入和删除操作。但是一般不用它执行查询语句，因为它不会返回查询到的数据
+    int result = sqlite3_exec(_db, sql, NULL, NULL, &errorMesg);
+    
+    if (result == SQLITE_OK) {
+        
+        NSLog(@"成功创建t_student表");
+        
+    }else {
+        
+        NSLog(@"创建 t_student失败:%s",errorMesg);
+    }
+    
+}
+
+- (void)insertInteractionType {
+    NSArray *arr = @[@{@"name": @"Foods"}, @{@"name": @"Drinks"}, @{@"name": @"Banks"}, @{@"name": @"Metro"}];
+    
+    sqlite3_stmt* stmt = NULL;/* OUT: Statement handle */
+    NSString *sql = @"INSERT INTO t_interaction_type (name) VALUES (?)";
+    sqlite3_prepare_v2(_db, sql.UTF8String, -1, &stmt, nil);
+    
+
+    for (NSDictionary *dic in arr) {
+        sqlite3_bind_text(stmt, 1, [dic[@"name"] UTF8String], -1, NULL);
+
+        //2.执行sql语句
+        int result = sqlite3_step(stmt);
+        NSLog(@"result: %d", result);
+        sqlite3_reset(stmt);
+
+    }
+
 }
 
 - (void)insertData:(NSDictionary *)dic {

@@ -90,7 +90,6 @@
     NSDictionary *resultDic = [DistanceCommon calculateRangeOfRadius:0.5 centerLat:coordinate.latitude centerLong:coordinate.longitude];
     
     NSArray *resultArray = [[SQLiteManager share] getDataWidhCondition:resultDic];
-    NSLog(@"done");
 }
 
 @end

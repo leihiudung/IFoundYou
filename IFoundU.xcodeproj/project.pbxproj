@@ -24,6 +24,8 @@
 		00620B6922672282002AA4A3 /* MerchantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B6822672282002AA4A3 /* MerchantObject.m */; };
 		00620B7022682968002AA4A3 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620B6F22682968002AA4A3 /* SettingView.m */; };
 		00620BB5226872C4002AA4A3 /* DistanceCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 00620BB4226872C4002AA4A3 /* DistanceCommon.m */; };
+		00620BB7226976EC002AA4A3 /* tututu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 00620BB6226976EC002AA4A3 /* tututu.jpg */; };
+		00620C4E226F17F7002AA4A3 /* sql_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00620C4D226F17F7002AA4A3 /* sql_default.plist */; };
 		00A5F75DC2E4B60AEA7D4D50 /* Pods_IFoundUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4463BB822AF6471ED0454C2 /* Pods_IFoundUUITests.framework */; };
 		00C94B9422488B140099FF61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C94B9322488B140099FF61 /* AppDelegate.m */; };
 		00C94B9A22488B140099FF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C94B9822488B140099FF61 /* Main.storyboard */; };
@@ -123,6 +125,8 @@
 		00620B712268467E002AA4A3 /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Base.framework; path = Pods/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
 		00620BB3226872C4002AA4A3 /* DistanceCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistanceCommon.h; sourceTree = "<group>"; };
 		00620BB4226872C4002AA4A3 /* DistanceCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistanceCommon.m; sourceTree = "<group>"; };
+		00620BB6226976EC002AA4A3 /* tututu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tututu.jpg; sourceTree = "<group>"; };
+		00620C4D226F17F7002AA4A3 /* sql_default.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = sql_default.plist; sourceTree = "<group>"; };
 		00C94B8F22488B140099FF61 /* IFoundU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IFoundU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C94B9222488B140099FF61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		00C94B9322488B140099FF61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -368,8 +372,10 @@
 				00C94B9B22488B160099FF61 /* Assets.xcassets */,
 				00C94B9D22488B160099FF61 /* LaunchScreen.storyboard */,
 				00C94BA022488B160099FF61 /* Info.plist */,
+				00620BB6226976EC002AA4A3 /* tututu.jpg */,
 				00C94CC0225339CF0099FF61 /* IFoundU.strings */,
 				00C94BA122488B160099FF61 /* main.m */,
+				00620C4D226F17F7002AA4A3 /* sql_default.plist */,
 			);
 			path = IFoundU;
 			sourceTree = "<group>";
@@ -757,8 +763,10 @@
 				00C94CBE225339CF0099FF61 /* IFoundU.strings in Resources */,
 				00C94E702254450F0099FF61 /* README.md in Resources */,
 				00C94B9C22488B160099FF61 /* Assets.xcassets in Resources */,
+				00620BB7226976EC002AA4A3 /* tututu.jpg in Resources */,
 				00C94E712254450F0099FF61 /* .gitignore in Resources */,
 				00C94B9A22488B140099FF61 /* Main.storyboard in Resources */,
+				00620C4E226F17F7002AA4A3 /* sql_default.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

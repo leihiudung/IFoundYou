@@ -7,10 +7,13 @@
 //
 
 #import "AppDelegate.h"
-
+#import <UserNotifications/UserNotifications.h>
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
 
-@interface AppDelegate ()
+#import "LoginController.h"
+#import "HomeController.h"
+
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 
@@ -26,6 +29,22 @@
     if (!ret) {
         NSLog(@"manager start failed!");
     }
+    
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    //监听回调事件
+    center.delegate = self;
+    
+    //iOS 10 使用以下方法注册，才能得到授权，注册通知以后，会自动注册 deviceToken，如果获取不到 deviceToken，Xcode8下要注意开启 Capability->Push Notification。
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
+                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                              // Enable or disable features based on authorization.
+                          }];
+    
+    //获取当前的通知设置，UNNotificationSettings 是只读对象，不能直接修改，只能通过以下方法获取
+    [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        
+    }];
+    
     
     return YES;
 }
@@ -55,6 +74,92 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    
+//    LoginController *tempvv = self.window.rootViewController;
+    UIViewController *tempCVC = [self getCurrentVC];
+    
+    if (tempCVC.tabBarController == nil) {
+        UIViewController *rootVC = tempCVC.presentingViewController;
+        if (rootVC == nil) {
+            rootVC = tempCVC;
+        }
+        while (rootVC.presentingViewController) {
+            rootVC = rootVC.presentingViewController;
+            if ([rootVC isKindOfClass:[HomeController class]]) {
+                break;
+            }
+        }
+        [rootVC dismissViewControllerAnimated:YES completion:nil];
+        [((HomeController *)rootVC) setSelectedIndex:3];
+    } else {
+        [tempCVC.tabBarController setSelectedIndex:3];
+    }
+    
+    
+    
+//    for (UIView *tempView in rootVC.view.subviews) {
+//        if (tempView.tag == 10085) {
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [((UIButton *)tempView) sendActionsForControlEvents:UIControlEventTouchUpInside];
+//            });
+//            
+//        }
+//    }
+    
+    completionHandler();
+}
+
+#pragma mark - UNUserNotificationCenterDelegate
+//在展示通知前进行处理，即有机会在展示通知前再修改通知内容。
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    //1. 处理通知
+    
+    //2. 处理完成后条用 completionHandler ，用于指示在前台显示通知的形式
+    completionHandler(UNNotificationPresentationOptionAlert);
+}
+
+//获取当前屏幕显示的viewcontroller
+- (UIViewController *)getCurrentVC
+{
+    UIViewController *rootViewController2 = self.window.rootViewController;
+    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    UIViewController *currentVC = [self getCurrentVCFrom:rootViewController];
+    
+    return currentVC;
+}
+
+- (UIViewController *)getCurrentVCFrom:(UIViewController *)rootVC
+{
+    UIViewController *currentVC;
+    
+    if ([rootVC presentedViewController]) {
+        // 视图是被presented出来的
+        
+        rootVC = [rootVC presentedViewController];
+    }
+    
+    if ([rootVC isKindOfClass:[UITabBarController class]]) {
+        // 根视图为UITabBarController
+        
+        currentVC = [self getCurrentVCFrom:[(UITabBarController *)rootVC selectedViewController]];
+        NSLog(@"done");
+        
+    } else if ([rootVC isKindOfClass:[UINavigationController class]]){
+        // 根视图为UINavigationController
+        
+        currentVC = [self getCurrentVCFrom:[(UINavigationController *)rootVC visibleViewController]];
+        
+    } else {
+        // 根视图为非导航类
+        
+        currentVC = rootVC;
+    }
+    
+    return currentVC;
 }
 
 

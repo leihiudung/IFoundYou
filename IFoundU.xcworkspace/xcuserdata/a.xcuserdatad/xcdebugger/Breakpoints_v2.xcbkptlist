@@ -4,34 +4,28 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IFoundU/Common/ToolCommon/DistanceCommon.m"
-            timestampString = "577331442.8650301"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "+calculateRangeOfRadius:centerLat:centerLong:"
-            landmarkType = "7">
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IFoundU/View/ShoppingView/ShoppingController.m"
-            timestampString = "577331442.865669"
+            filePath = "IFoundU/View/ShoppingView/ShoppingView.m"
+            timestampString = "577696628.641709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-calculateMerchantDistance:"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-initView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +36,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFoundU/View/ShoppingView/ShoppingView.m"
-            timestampString = "577331442.866648"
+            timestampString = "577696628.642357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-nearbyMerchant:"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-initRAC"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IFoundU/DataPackage/SQLiteManager.m"
+            timestampString = "577704589.644503"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-insertInteractionType"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
