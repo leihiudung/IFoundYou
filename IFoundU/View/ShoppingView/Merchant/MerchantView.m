@@ -21,7 +21,7 @@
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 
-@interface MerchantView() <UITableViewDataSource, UITableViewDelegate> {
+@interface MerchantView() <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     BOOL _isRefreshing;
 }
 @property (nonatomic, strong) LingTextField *storeView;
@@ -60,7 +60,9 @@
 
 - (void)initView {
     // 收回键盘
-    [self addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selfTouchAction:)]];
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selfTouchAction:)];
+    gesture.delegate = self;
+    [self addGestureRecognizer:gesture];
     
     self.storeView = [[LingTextField alloc]init];
     self.districtView = [[LingTextField alloc]init];
@@ -194,10 +196,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tipsView setContentWithDic:self.resultArray[indexPath.row]];
-//    [self.tipsView setTitle:self.resultArray[indexPath.row][@"name"] addr:self.resultArray[indexPath.row][@"addr"] tel:self.resultArray[indexPath.row][@"phone"]];
 
 }
 
-
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isKindOfClass:[MerchantView class]]) {
+        return YES;
+    }
+    NSLog(@"done");
+    return NO;
+    
+}
 
 @end

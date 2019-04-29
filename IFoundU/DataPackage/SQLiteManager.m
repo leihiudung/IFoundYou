@@ -13,6 +13,8 @@
 static NSString *APP_DB_IDENTIFIER = @"iOS_DatabaseUpdateDemo";
 @interface SQLiteManager() {
     sqlite3 *_db;
+    
+    NSString *databasePath; // 数据库路径
 }
 
 @end
@@ -36,48 +38,174 @@ static NSString *databaseFilePath() {
     static SQLiteManager *sqliteManager;
     dispatch_once(&onceToken, ^{
         sqliteManager = [[SQLiteManager alloc]init];
-        [sqliteManager initDatabase];
+        
         NSString *tempString= databaseFilePath();
-        NSLog(@"done");
+        
     });
     return sqliteManager;
     
 }
 
-- (void)initDatabase {
-    //1.获取沙盒文件名
-    NSString *fileName = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"Merchant.sqlite"];
-    NSLog(@"fileName = %@",fileName);
+- (instancetype)init {
+    databasePath = databaseFilePath();
+    NSInteger databaseVersion = 1;
     
-    int result = sqlite3_open(fileName.UTF8String, &_db);
-    if (result == SQLITE_OK) {
-        
-        NSLog(@"成功打开数据库");
-        
-        // 创表
-        const char *typeSql = "create table if not exists t_interaction_type (id integer primary key autoincrement, name text, type text);";
+    if (self = [super init]) {
+        if (![[NSFileManager defaultManager] fileExistsAtPath:databasePath]) {
+            // initDatabase做了2件事
+            // 1.创建数据库
+            // 2.创建表
+            BOOL flag = [self initDatabase];
+            if (flag) {
+                // 初始化数据库成功
+                [self openDatabase];
+            }
+        } else {
+            [self openDatabase];
+            databaseVersion = [self getDatabaseVersion];
+        }
+        // insert into t_district (name, sub_district_id) values ('福田', select id from t_city where area_code = '440300');
+        switch (databaseVersion) {
+            case 1:
+                if (![self isExistDatabaseVersion]) {
+                    [self insertDatabaseVersion:databaseVersion + 1];
+                } else {
+                    [self updateDatabaseVersion:databaseVersion + 1];
+                }
+                databaseVersion += 1;
+            case 2:
+                [self updateDatabase:databaseVersion];
+                [self updateDatabaseVersion:databaseVersion + 1];
+                databaseVersion += 1;
+            default:
+                break;
+        }
+    }
+    return self;
+}
 
-        const char *citySql = "create table if not exists t_city (id integer primary key autoincrement, name text);";
+- (BOOL)initDatabase {
+    
+    
+    // 判断是否有数据库存在
+    
+    // 不存在,就是首次使用该App.
+        // 生成数据库
+        // 把这次的版本号+1,保存到数据库中的数据库表中
+        // 通过switch依次修改数据库
+    // 存在,到数据库表中,取出版本号
+        // 通过switch依次q修改数据库
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"sql_default" ofType:@"plist"];
+    NSArray *array = [[NSArray alloc]initWithContentsOfFile:path];
+
+    if (array != nil) {
+        // 内部没有.sqlite文件.sqlite3_open如果有就打开,没有就新建
+        if (sqlite3_open([databasePath UTF8String], &_db) != SQLITE_OK) {
+            sqlite3_close(_db);
+            return NO;
+        } else {
+            char *errorMsg = nil;
+            for (NSString *tableStr in array) {
+                if (sqlite3_exec(_db, [tableStr UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
+                    // 这里之所以调用sqlite3_free().是因为当发生错误时,errorMsg会被分配内存,填写错误信息.所以调用者有需要调用这个函数来释放该内存
+                    sqlite3_free(errorMsg);
+                    return NO;
+                }
+
+            }
+            
+            return YES;
+        }
         
-        const char *districtSql = "create table if not exists t_district (id integer primary key autoincrement, name text, sub_district_id integer, foreign key(sub_district_id) references t_city(id));";
         
-        const char *merchantSql = "create table if not exists t_merchant (id integer primary key autoincrement, name text, addr text, phone text, province text, city text, area text, detailInfo text, latitude TEXT, longtitude TEXT, interaction_type_id integer, district_id integer, foreign key(interaction_type_id) references t_interaction_type(id), foreign key(district_id) references t_district(id));";
-        
-        [self initTables:typeSql];
-        [self initTables:citySql];
-        [self initTables:districtSql];
-        [self initTables:merchantSql];
-        
-        [self insertInteractionType];
-        
-    }else {
-        
-        NSLog(@"打开数据库失败");
+    }
+    return NO;
+
+}
+
+- (BOOL)openDatabase {
+    if (sqlite3_open([databasePath UTF8String], &_db)  != SQLITE_OK) {
+        sqlite3_close(_db);
+        return NO;
+    } else {
+        return YES;
     }
     
 }
 
-- (void)initTables:(const char *)sql {
+- (BOOL)isExistDatabaseVersion {
+    const char *querySql = "select count(*) from t_database_version;";
+    char *errormsg = nil;
+
+    sqlite3_stmt* stmt = NULL;
+    if (sqlite3_prepare_v2(_db, querySql, -1, &stmt, nil) == SQLITE_OK) {
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            if (sqlite3_column_int(stmt, 0) == 1) {
+                sqlite3_finalize(stmt);
+                return YES;
+            }
+            
+        }
+    }
+    sqlite3_finalize(stmt);
+    return NO;
+}
+
+- (void)insertDatabaseVersion:(NSInteger)version {
+    sqlite3_stmt *stmt;
+    const char *insertSql = "insert into t_database_version(version) values(?)";
+    if (sqlite3_prepare_v2(_db, insertSql, -1, &stmt, nil) == SQLITE_OK) {
+        sqlite3_bind_int64(stmt, 1, version);
+        if (sqlite3_step(stmt) == SQLITE_DONE) {
+            
+        }
+        
+    }
+    // 调用sqlite3_finalize函数释放所有的内部资源和sqlite3_stmt数据结构，有效删除prepared语句
+    sqlite3_finalize(stmt);
+}
+
+- (void)updateDatabaseVersion:(NSInteger)version {
+    sqlite3_stmt *stmt = NULL;
+    const char *updateSql = "update t_database_version set version = ?";
+    if (sqlite3_prepare_v2(_db, updateSql, -1, &stmt, nil) == SQLITE_OK) {
+        sqlite3_bind_int64(stmt, 1, version);
+        if (sqlite3_step(stmt) == SQLITE_DONE) {
+            
+        }
+    }
+    sqlite3_finalize(stmt);
+    
+}
+
+- (void)updateDatabase:(NSInteger)version {
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"sql_update_%ld", version] ofType:@"plist"];
+    // 1.检查文件是否存在
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSArray *array = [[NSArray alloc]initWithContentsOfFile:path];
+        if (sqlite3_open([databasePath UTF8String], &_db) != SQLITE_OK) {
+            sqlite3_close(_db);
+            return;
+        } else {
+            char *errorMsg = nil;
+            NSDictionary *temp = @{@"name": @"li", @"addr": @"深圳"};
+        
+            for (NSString *updateStr in array) {
+                if (sqlite3_exec(_db, [updateStr UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
+                    sqlite3_free(errorMsg);
+                    return;
+                }
+                sqlite3_free(errorMsg);
+                
+            }
+        }
+        
+    }
+    
+    //
+}
+
+- (void)initTables2:(const char *)sql {
     char *errorMesg = NULL; // 用来存储错误信息
     //sqlite3_exec()可以执行任何SQL语句，比如创表、更新、插入和删除操作。但是一般不用它执行查询语句，因为它不会返回查询到的数据
     int result = sqlite3_exec(_db, sql, NULL, NULL, &errorMesg);
@@ -123,14 +251,19 @@ static NSString *databaseFilePath() {
     }
     //1.创建插入数据的sql语句
     //===========插入单条数据=========
+    // create table if not exists t_city (id integer primary key autoincrement, name text);
+
+    // create table if not exists t_district (id integer primary key autoincrement, name text, sub_district_id integer, foreign key(sub_district_id) references t_city(id));
     
     NSUInteger tempFlag = [dic[@"phone"] rangeOfString:@")"].location;
-
+    // insert into t_city (name, area_code) values ('深圳', '440300');
+    // select id from t_city where area_code = '440300';
+    // insert into t_district (name, sub_district_id) values ('福田', select id from t_city where area_code = '440300');
     [NSString stringWithFormat:@"\'%@\'", dic[@"phone"]];
     NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO t_merchant (name, addr, phone, province, city, area, detailInfo, latitude, longtitude) VALUES ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@')", dic[@"name"], dic[@"addr"], dic[@"phone"], dic[@"province"], dic[@"city"], dic[@"area"], dic[@"detailInfo"], dic[@"latitude"], dic[@"longtitude"]];
     
     char *erroMsg = NULL;
-    //2.执行sql语句
+    // 2.执行sql语句
     int ret = sqlite3_exec(_db, insertSql.UTF8String, NULL, NULL, &erroMsg);
     
 //    //==========同时插入多条数据=======
@@ -159,7 +292,7 @@ static NSString *databaseFilePath() {
         }
 //    }
     
-    
+    //
 }
 
 - (BOOL)getRowsByCondition:(NSString *)condition compareWith:(NSString *)column {
@@ -250,5 +383,19 @@ static NSString *databaseFilePath() {
         NSLog(@"查询失败");
     }
     return nil;
+}
+
+- (NSInteger)getDatabaseVersion {
+    sqlite3_stmt *stmt;
+    NSInteger version = 0;
+    const char *querySql = "select version from t_database_version;";
+    if (sqlite3_prepare_v2(_db, querySql, -1, &stmt, nil) == SQLITE_OK) {
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            version  = sqlite3_column_int(stmt, 0);
+        }
+    }
+    sqlite3_finalize(stmt);
+    return version;
+    
 }
 @end

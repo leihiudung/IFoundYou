@@ -45,7 +45,7 @@
 
 - (void)poiSearchInCity {
     self.cityOption.keyword = self.storeString;
-    [self.cityOption.city stringByAppendingString:self.districtString];
+    self.cityOption.city = [self.cityOption.city stringByAppendingString:self.districtString];
     [self.poiSearch poiSearchInCity:self.cityOption];
 }
 

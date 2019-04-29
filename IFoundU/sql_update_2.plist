@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>insert into t_city (name, area_code) values (&apos;深圳&apos;, &apos;440300&apos;);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;福田区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;罗湖区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;南山区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;盐田区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;宝安区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;龙岗区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;龙华区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;坪山区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;光明区&apos;, 1);</string>
+	<string>insert into t_district (name, sub_district_id) values (&apos;大鹏新区&apos;, 1);</string>
+</array>
+</plist>

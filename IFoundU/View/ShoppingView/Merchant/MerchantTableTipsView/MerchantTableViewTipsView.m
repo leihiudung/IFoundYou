@@ -97,7 +97,7 @@
     
     self.uncertaintyBtn = [[UIButton alloc]init];
     [self.uncertaintyBtn setTitle:@"Uncertainty" forState:UIControlStateNormal];
-    [self.uncertaintyBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.uncertaintyBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [self.uncertaintyBtn setBackgroundColor:[UIColor blueColor]];
     CALayer *uncertaintyLayer = self.uncertaintyBtn.layer;
     uncertaintyLayer.masksToBounds = YES;

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>interaction_type</key>
+<array>
+	<string>create table if not exists t_database_version (id integer primary key autoincrement, version integer);</string>
 	<string>create table if not exists t_interaction_type (id integer primary key autoincrement, name text, type text);</string>
-	<key>city</key>
-	<string>create table if not exists t_city (id integer primary key autoincrement, name text);</string>
-	<key>district</key>
+	<string>create table if not exists t_city (id integer primary key autoincrement, name text, area_code text);</string>
 	<string>create table if not exists t_district (id integer primary key autoincrement, name text, sub_district_id integer, foreign key(sub_district_id) references t_city(id));</string>
-	<key>merchant</key>
 	<string>create table if not exists t_merchant (id integer primary key autoincrement, name text, addr text, phone text, province text, city text, area text, detailInfo text, latitude TEXT, longtitude TEXT, interaction_type_id integer, district_id integer, foreign key(interaction_type_id) references t_interaction_type(id), foreign key(district_id) references t_district(id));</string>
-</dict>
+</array>
 </plist>
